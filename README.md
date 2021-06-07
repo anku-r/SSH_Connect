@@ -1,5 +1,5 @@
 # SSH_Connect
-* Lightweight user friendly ssh connection.
+* Lightweight user friendly ssh connection utilty.
 * ssh-con script uses windows ssh facility to connect to any ssh server.
 * Currently only supports public key login.
 * Use connections.properties to store your connections like <unique_number>=<host>;<user>. Example is given in file.
