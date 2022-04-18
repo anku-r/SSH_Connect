@@ -1,4 +1,4 @@
-private_key="~/.ssh/ankur_pk"
+private_key="<Paste Private key path here>"
 config_file="./connections.properties"
 separators='=,;'
 
