@@ -1,33 +1,33 @@
-@ECHO OFF
-TITLE SSH Connect
+@echo off
+title SSH Connect
 
-SET private_key=add_private_key_path_here
-SET config_file=connections.properties
-SET fields=1,2,3
-SET separators=[=,;]
+set private_key=~/.ssh/ankur_pk
+set config_file=connections.properties
+set fields=1,2,3
+set separators=[=,;]
 
-ECHO Use below ^<number^> =^> ^<host^> mapping to connect
-FOR /F "tokens=%fields% delims=%separators%" %%A IN (%config_file%) DO (
-	ECHO %%A =^> %%B as %%C
+echo Use below ^<number^> =^> ^<host^> mapping to connect
+for /F "tokens=%fields% delims=%separators%" %%A in (%config_file%) do (
+	echo %%A =^> %%B as %%C
 )
-ECHO ===================================================================
+echo ===================================================================
 
 :USER_INPUT
-SET /P host=Enter Host Number: 
+set /P host=Enter Host Number: 
 
-FOR /F "tokens=%fields% delims==%separators%" %%A IN (%config_file%) DO (
-	IF %host% == %%A (
-		SET host=%%B
-		SET user=%%C
-		CLS
-		GOTO CONNECT_COMMAND
+for /F "tokens=%fields% delims==%separators%" %%A in (%config_file%) do (
+	if %host% == %%A (
+		set host=%%B
+		set user=%%C
+		cls
+		goto CONNECT_COMMAND
 	)
 )
 
-ECHO Invalid Input!
-GOTO USER_INPUT
+echo Invalid Input!
+goto USER_INPUT
 
 :CONNECT_COMMAND
-SSH %user%@%host% -i %private_key%
+ssh %user%@%host% -i %private_key%
 
-SSH-CON
+ssh-con
